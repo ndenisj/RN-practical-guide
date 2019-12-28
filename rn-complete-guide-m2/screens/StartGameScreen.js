@@ -9,9 +9,12 @@ import {
 	Alert,
 } from "react-native";
 import Card from "../components/Card";
-import Colors from "../constants/colors";
+import colors from "../constants/colors";
 import Input from "../components/Input";
 import NumberContainer from "../components/NumberContainer";
+import BodyText from "../components/BodyText";
+import TitleText from "../components/TitleText";
+import MainButton from "../components/MainButton";
 
 const StartGameScreen = props => {
 	const [enteredValue, setEnteredValue] = useState("");
@@ -50,10 +53,10 @@ const StartGameScreen = props => {
 			<Card style={styles.summaryContainer}>
 				<Text>You Selected</Text>
 				<NumberContainer>{selectedNumber}</NumberContainer>
-				<Button
-					title='START GAME'
-					onPress={() => props.onStartGame(selectedNumber)}
-				/>
+
+				<MainButton onPress={() => props.onStartGame(selectedNumber)}>
+					START GAME
+				</MainButton>
 			</Card>
 		);
 	}
@@ -64,9 +67,9 @@ const StartGameScreen = props => {
 				Keyboard.dismiss();
 			}}>
 			<View style={styles.screen}>
-				<Text style={styles.title}>Start a new game!</Text>
+				<TitleText style={styles.title}>Start a new game!</TitleText>
 				<Card style={styles.inputContainer}>
-					<Text>Select a Number</Text>
+					<BodyText style={{ fontSize: 18 }}>Select a Number</BodyText>
 					<Input
 						onChangeText={numberInputHandler}
 						value={enteredValue}
@@ -79,18 +82,16 @@ const StartGameScreen = props => {
 					/>
 					<View style={styles.btnContainer}>
 						<View style={styles.btn}>
-							<Button
-								title='Reset'
-								onPress={resetInputHandler}
-								color={Colors.accent}
-							/>
+							<MainButton style={styles.btnReset} onPress={resetInputHandler}>
+								RESET
+							</MainButton>
 						</View>
 						<View style={styles.btn}>
-							<Button
-								title='Confirm'
-								onPress={confirmInputHandler}
-								color={Colors.primary}
-							/>
+							<MainButton
+								style={styles.btnConfirm}
+								onPress={confirmInputHandler}>
+								CONFIRM
+							</MainButton>
 						</View>
 					</View>
 				</Card>
@@ -101,17 +102,18 @@ const StartGameScreen = props => {
 };
 
 const styles = StyleSheet.create({
+	btnReset: { backgroundColor: colors.accent, paddingHorizontal: 25 },
+	btnConfirm: { backgroundColor: colors.primary, paddingHorizontal: 25 },
 	input: {
-		width: 50,
+		width: 80,
 		textAlign: "center",
 	},
 	btn: {
-		width: "40%",
+		// width: "40%",
 	},
 	title: {
 		fontSize: 20,
 		marginVertical: 10,
-		fontFamily: "open-sans-bold",
 	},
 	inputContainer: {
 		width: 300,
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		width: "100%",
 		justifyContent: "space-between",
-		paddingHorizontal: 15,
+		// paddingHorizontal: 15,
 	},
 	screen: {
 		flex: 1,
