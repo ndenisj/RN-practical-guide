@@ -116,13 +116,15 @@ const styles = StyleSheet.create({
 		marginVertical: 10,
 	},
 	inputContainer: {
-		width: 300,
-		maxWidth: "80%",
+		width: "80%",
+		// maxWidth: "80%",
+		minWidth: 300,
 		alignItems: "center",
 	},
 	btnContainer: {
 		flexDirection: "row",
 		width: "100%",
+		maxWidth: "95%",
 		justifyContent: "space-between",
 		// paddingHorizontal: 15,
 	},
